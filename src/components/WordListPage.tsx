@@ -1,19 +1,8 @@
-import { useMemo, useRef, useState } from "react";
 import { useVirtualizer } from "@tanstack/react-virtual";
-import { useWords } from "../hooks/useWords";
+import { useMemo, useRef, useState } from "react";
 import { AddWordDialog } from "../components/AddWordDialog";
+import { useWords } from "../hooks/useWords";
 import { WordCard } from "./WordCard";
-
-type Word = {
-  id: string;
-  text: string;
-  phonetic: string;
-  partOfSpeech: string;
-  definition: string;
-  example?: string;
-  deckId: string;
-  status: "NOT_YET" | "MASTERED";
-};
 
 export default function WordListPage() {
   const { data: words = [], isLoading, isError } = useWords();
