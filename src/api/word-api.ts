@@ -12,7 +12,7 @@ export interface Word {
 }
 
 const api = axios.create({
-  baseURL: "https://koa-zenith.onrender.com/api",
+  baseURL: import.meta.env.VITE_API_URL,
 });
 
 export const getWords = async (): Promise<Word[]> => {
@@ -26,6 +26,6 @@ export type CreateWordRequest = {
 };
 
 export const createWord = async (payload: CreateWordRequest) => {
-  const res = await axios.post("/vocabulary", payload);
+  const res = await api.post("/vocabulary", payload);
   return res.data;
 };
